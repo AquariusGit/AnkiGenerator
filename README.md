@@ -1,3 +1,5 @@
+[中文](README_zh_CN.md)
+
 As a programmer, while learning Japanese, I discovered the amazing learning tool called Anki. I've always wanted to import the large amount of data I've accumulated into Anki, but creating cards manually one by one is too troublesome, so I never took action.
 
 Recently, I've been thinking about how AI assistants can better collaborate with software development, so I decided to give it a try. With the help of an AI assistant, I used Python, a language I've never used before, to develop an application that can download YouTube audio/video and subtitles locally, and then use ffmpeg and TTS to generate corresponding Anki packages.
