@@ -4,8 +4,9 @@
 但从一个架构师的角度出发，代码的模块化并不好，估计还需要更深入的学习和理解。
 相应的使用说明帮助在下面（多语言版本是由AI生成并翻译的，我仅作了少许修改）。
 
-[英文](help/help_en.md) [简体中文](help/help_zh_hans.md) [繁体中文](help/help_zh_hant.md) [日文](help/help_ja.md) [韩文](help/help_ko.md) [越南语](help/help_vi.md)
+[English](src/help/help_en.md) [简体中文](src/help/help_zh_hans.md) [繁体中文](src/help/help_zh_hant.md) [日本語](src/help/help_ja.md) [한국어](src/help/help_ko.md)  [Tiếng Việt](src/help/help_vi.md)
 
-![[DownloadTab.png]]
 
-![[GenerateTab.png]]
+![下载界面](images/DownloadTab.png)
+
+![使用字幕生成Anki数据包界面](images/GenerateTab.png)

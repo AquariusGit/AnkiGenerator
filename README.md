@@ -1,11 +1,15 @@
-作为一名程序员，在学习日语的过程中，认识了Anki这个好用的学习神器。一直想将积累的大量数据导入Anki中，但手工单条制作太麻烦了，于是一直没有行动。
-最近思考未来AI助手如何与软件开发进行更好地协作，于是就想试试水。用一门自己从没用过的Python，在AI助手的帮助下开发一款能将youtube音视频和字幕下载到本地，然后使用ffmpeg和tts生成相应的Anki数据包。
-原型开发很快，不到一天就完成了。让人惊喜的是，在与AI助手中交互的过程中，AI助手反馈了大量的需求给我，并应用在程序中。
-但从一个架构师的角度出发，代码的模块化并不好，估计还需要更深入的学习和理解。
-相应的使用说明帮助在下面（多语言版本是由AI生成并翻译的，我仅作了少许修改）。
+As a programmer, while learning Japanese, I discovered the amazing learning tool called Anki. I've always wanted to import the large amount of data I've accumulated into Anki, but creating cards manually one by one is too troublesome, so I never took action.
 
-[英文](help/help_en.md) [简体中文](help/help_zh_hans.md) [繁体中文](help/help_zh_hant.md) [日文](help/help_ja.md) [韩文](help/help_ko.md) [越南语](help/help_vi.md)
+Recently, I've been thinking about how AI assistants can better collaborate with software development, so I decided to give it a try. With the help of an AI assistant, I used Python, a language I've never used before, to develop an application that can download YouTube audio/video and subtitles locally, and then use ffmpeg and TTS to generate corresponding Anki packages.
 
-![[DownloadTab.png]]
+The prototype was developed very quickly, in less than a day. To my surprise, during the interaction with the AI assistant, it gave me a lot of requirements that I then implemented in the program.
 
-![[GenerateTab.png]]
+However, from an architect's perspective, the code's modularity is not very good, and I probably need to study and understand it more deeply.
+
+The corresponding instructions are below (the multi-language versions were generated and translated by AI, and I have only made minor modifications).
+
+[English](src/help/help_en.md) [简体中文](src/help/help_zh_hans.md) [繁体中文](src/help/help_zh_hant.md) [日本語](src/help/help_ja.md) [한국어](src/help/help_ko.md)  [Tiếng Việt](src/help/help_vi.md)
+
+![Download Interface](images/DownloadTab.png)
+
+![Interface for generating Anki packages using subtitles](images/GenerateTab.png)
