@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Trình tạo gói thẻ Anki - Hướng dẫn sử dụng</title>
+</head>
+<body>
+    <h1>Trình tạo gói thẻ Anki - Hướng dẫn sử dụng</h1>
+<p>Chào mừng bạn đến với Trình tạo gói thẻ Anki! Công cụ này được thiết kế để giúp bạn dễ dàng và hiệu quả tạo các thẻ học Anki song ngữ với âm thanh, ảnh chụp màn hình và văn bản gốc từ các video và phụ đề yêu thích của bạn.
+Mã nguồn dựa trên giấy phép mã nguồn mở Apache thân thiện với doanh nghiệp, và địa chỉ mã nguồn là <a href="https://github.com/AquariusGit/AnkiGenerator">https://github.com/AquariusGit/AnkiGenerator</a>.</p>
+<h2>Mục lục</h2>
+<ul>
+<li><a href="#giới-thiệu-phần-mềm">Giới thiệu phần mềm</a></li>
+<li><a href="#tính-năng-chính">Tính năng chính</a></li>
+<li><a href="#yêu-cầu-hệ-thống">Yêu cầu hệ thống</a></li>
+<li><a href="#sử-dụng-lần-đầu">Sử dụng lần đầu</a></li>
+<li><a href="#tổng-quan-giao-diện">Tổng quan giao diện</a></li>
+<li><a href="#các-bước-sử-dụng">Các bước sử dụng</a>
+<ul>
+<li><a href="#bước-một-tải-xuống-âm-thanhvideo-và-phụ-đề">Bước một: Tải xuống âm thanh/video và phụ đề</a></li>
+<li><a href="#bước-hai-tạo-gói-thẻ-anki">Bước hai: Tạo gói thẻ Anki</a></li>
+<li><a href="#tùy-chọn-tạo-từ-tệp-csv">Tùy chọn: Tạo từ tệp CSV</a></li>
+</ul>
+</li>
+<li><a href="#tab-cấu-hình">Tab cấu hình</a></li>
+<li><a href="#các-câu-hỏi-thường-gặp-faq">Các câu hỏi thường gặp (FAQ)</a></li>
+</ul>
+<hr />
+<h2>Giới thiệu phần mềm</h2>
+<p>Công cụ này là một ứng dụng giao diện đồ họa có thể tải xuống video/âm thanh và phụ đề đa ngôn ngữ từ các trang web video như YouTube, và xử lý chúng thành các tệp <code>.apkg</code> có thể nhập vào Anki. Các thẻ được tạo có thể bao gồm câu gốc, bản dịch, đoạn âm thanh tương ứng, ảnh chụp màn hình video, và thậm chí tự động thêm pinyin/furigana/romanization cho các ngôn ngữ Trung, Nhật, Hàn, làm phong phú đáng kể tài liệu học ngôn ngữ của bạn.</p>
+<h2>Tính năng chính</h2>
+<ul>
+<li><strong>Tải xuống video</strong>: Hỗ trợ tải xuống video hoặc chỉ âm thanh từ các trang web như YouTube.</li>
+<li><strong>Tải xuống phụ đề</strong>: Tự động tìm nạp và tải xuống phụ đề chính thức và phụ đề tự động tạo.</li>
+<li><strong>Thẻ song ngữ</strong>: Tạo thẻ Anki chứa phụ đề hai ngôn ngữ chỉ bằng một cú nhấp chuột.</li>
+<li><strong>Trích xuất âm thanh</strong>: Tự động cắt các đoạn âm thanh tương ứng với mỗi phụ đề từ video.</li>
+<li><strong>Chụp màn hình video</strong>: Tự động chụp khung hình video cho mỗi thẻ.</li>
+<li><strong>Hỗ trợ TTS</strong>: Khi không có video hoặc âm thanh, có thể sử dụng gTTS hoặc Edge-TTS để tạo giọng nói cho phụ đề.</li>
+<li><strong>Tự động thêm chú âm</strong>:
+<ul>
+<li>Tự động thêm Furigana cho chữ Hán tiếng Nhật.</li>
+<li>Tự động thêm Pinyin cho chữ Hán tiếng Trung.</li>
+<li>Tự động thêm Romanization cho tiếng Hàn.</li>
+</ul>
+</li>
+<li><strong>Tùy chỉnh cao</strong>:
+<ul>
+<li>Tùy chỉnh mẫu và kiểu thẻ Anki.</li>
+<li>Điều chỉnh dòng thời gian phụ đề, hợp nhất các dòng phụ đề.</li>
+<li>Nhiều tùy chọn xử lý hậu kỳ, chẳng hạn như tự động dọn dẹp các tệp tạm thời.</li>
+</ul>
+</li>
+<li><strong>Giao diện đa ngôn ngữ</strong>: Hỗ trợ tiếng Anh, tiếng Trung giản thể/phồn thể, tiếng Nhật, tiếng Hàn, tiếng Việt và các ngôn ngữ giao diện khác.</li>
+</ul>
+<h2>Yêu cầu hệ thống</h2>
+<ul>
+<li><strong>Python</strong>: Yêu cầu cài đặt môi trường Python 3.x.</li>
+<li><strong>FFmpeg</strong>: Phải cài đặt <strong>FFmpeg</strong> và thêm nó vào biến môi trường hệ thống (PATH) của bạn. FFmpeg được sử dụng để trích xuất âm thanh và chụp ảnh màn hình từ video. Nếu không được cài đặt đúng cách, các chức năng liên quan sẽ không khả dụng.</li>
+</ul>
+<h2>Sử dụng lần đầu</h2>
+<p>Khi bạn chạy phần mềm này lần đầu tiên, một cửa sổ &quot;Thiết lập ban đầu&quot; sẽ bật lên.</p>
+<ol>
+<li><strong>Chọn ngôn ngữ hiển thị</strong>: Chọn ngôn ngữ bạn muốn giao diện phần mềm hiển thị.</li>
+<li><strong>Chọn ngôn ngữ mặt trước/mặt sau mặc định</strong>: Đặt ngôn ngữ nguồn (mặt trước) và ngôn ngữ đích (mặt sau) bạn thường xuyên sử dụng nhất. Điều này sẽ tự động chọn ngôn ngữ cho bạn trong các thao tác tiếp theo, nâng cao hiệu quả.</li>
+</ol>
+<p>Sau khi thiết lập xong, nhấp vào &quot;Tiếp tục&quot; để vào giao diện chính.</p>
+<h2>Tổng quan giao diện</h2>
+<p>Giao diện chính của phần mềm được chia thành ba phần chính:</p>
+<ol>
+<li><strong>Bên trái - Các tab chức năng</strong>:
+<ul>
+<li><strong>Tải xuống âm thanh/video và phụ đề</strong>: Tải xuống tài liệu từ URL mạng.</li>
+<li><strong>Tạo gói Anki</strong>: Tạo thẻ bằng cách sử dụng tài liệu cục bộ hoặc đã tải xuống.</li>
+<li><strong>Tạo thẻ từ tệp CSV</strong>: Tạo hàng loạt thẻ từ tệp <code>.csv</code>.</li>
+<li><strong>Cấu hình</strong>: Thiết lập hành vi mặc định của phần mềm và các mẫu Anki.</li>
+</ul>
+</li>
+<li><strong>Bên phải - Cửa sổ nhật ký</strong>: Hiển thị tất cả thông tin, cảnh báo và lỗi trong quá trình hoạt động của phần mềm.</li>
+<li><strong>Bên dưới - Thanh tiến trình</strong>: Hiển thị tiến trình tải xuống hoặc tạo.</li>
+</ol>
+<h2>Các bước sử dụng</h2>
+<h3>Bước một: Tải xuống âm thanh/video và phụ đề</h3>
+<p>Tab này được sử dụng để lấy các tài liệu cần thiết để tạo thẻ từ các video trực tuyến. Tuy nhiên, xin lưu ý rằng tốt nhất là video hoặc âm thanh chỉ chứa một loại ngôn ngữ duy nhất, chẳng hạn như tiếng Trung thuần túy hoặc tiếng Nhật thuần túy. Không sử dụng các video hoặc âm thanh chứa nhiều ngôn ngữ cùng lúc. Ví dụ, một video đọc tiếng Trung trước rồi đọc tiếng Nhật thì không phù hợp lắm. Chúng tôi sẽ xem xét liệu có cần cung cấp chức năng này sau này hay không.</p>
+<ol>
+<li><strong>URL video</strong>: Dán một liên kết video YouTube. Phần mềm sẽ tự động phát hiện các liên kết hợp lệ trong khay nhớ tạm và điền vào. Thường là một tệp video đơn lẻ, không phải danh sách phát hoặc trang video cá nhân (điều này sẽ dẫn đến việc tải xuống không chính xác hoặc tải xuống quá nhiều tệp). Theo mặc định, chỉ hỗ trợ video YouTube. Nếu bạn muốn sử dụng video từ các trang web khác, vui lòng chọn hộp kiểm sau trường nhập URL để cho biết không kiểm tra định dạng URL, sau đó bạn có thể tải xuống âm thanh/video và phụ đề từ bất kỳ trang web nào được yt-dlp hỗ trợ (vui lòng tự xác nhận kết quả).</li>
+<li><strong>Truy vấn ngôn ngữ</strong>: Nhấp vào nút này, phần mềm sẽ bắt đầu phân tích URL để lấy tất cả các định dạng video/âm thanh và ngôn ngữ phụ đề có sẵn.</li>
+<li><strong>Thư mục tải xuống</strong>: Chọn thư mục bạn muốn lưu các tệp đã tải xuống.</li>
+<li><strong>Định dạng âm thanh/video</strong>: Chọn một định dạng từ danh sách thả xuống. Nên chọn định dạng <code>mp4</code> bao gồm cả âm thanh và video, hoặc định dạng <code>m4a</code> cho âm thanh thuần túy.</li>
+<li><strong>Ngôn ngữ phụ đề mặt trước/mặt sau</strong>: Lần lượt chọn ngôn ngữ phụ đề bạn muốn sử dụng cho mặt trước và mặt sau của thẻ. Phần mềm sẽ tự động cố gắng chọn ngôn ngữ mặc định dựa trên &quot;Cấu hình&quot; của bạn.</li>
+<li><strong>Chỉ tải xuống phụ đề</strong>: Nếu bạn đã có tệp video cục bộ, hoặc không muốn tạo ảnh chụp màn hình và âm thanh gốc, bạn có thể chọn tùy chọn này để chỉ tải xuống tệp phụ đề.</li>
+<li><strong>Bắt đầu tải xuống</strong>: Nhấp để bắt đầu tải xuống. Sau khi hoàn tất, phần mềm sẽ hỏi bạn có muốn tự động điền đường dẫn tệp đã tải xuống vào tab &quot;Tạo gói Anki&quot; hay không. Nên chọn &quot;Có&quot;.</li>
+</ol>
+<h3>Bước hai: Tạo gói thẻ Anki</h3>
+<p>Tab này là nơi chứa chức năng cốt lõi, được sử dụng để kết hợp các tài liệu thành thẻ Anki.</p>
+<ol>
+<li><strong>Cài đặt đường dẫn tệp</strong>:
+<ul>
+<li><strong>Tệp phương tiện (Tùy chọn)</strong>: Chọn tệp video hoặc âm thanh của bạn. Nếu bạn muốn trích xuất âm thanh và ảnh chụp màn hình từ video, mục này là bắt buộc.</li>
+<li><strong>Tệp phụ đề mặt trước/mặt sau</strong>: Chọn tệp phụ đề của hai ngôn ngữ (định dạng <code>.srt</code> hoặc <code>.vtt</code>).</li>
+<li><strong>Thư mục đầu ra</strong>: Chọn vị trí lưu gói Anki (<code>.apkg</code>) và các tệp tạm thời được tạo (nếu thư mục không tồn tại, nó sẽ được tạo tự động).</li>
+<li><strong>Tên gói Anki</strong>: Đặt tên cho gói thẻ Anki của bạn, mặc định sẽ giống với tên tệp phụ đề mặt trước.</li>
+</ul>
+</li>
+<li><strong>Các tùy chọn chính</strong>:
+<ul>
+<li><strong>Tùy chọn chụp màn hình</strong>:
+<ul>
+<li><code>Thêm ảnh chụp màn hình</code>: Chọn tùy chọn này để tạo ảnh chụp màn hình cho mỗi thẻ.</li>
+<li><code>Thời điểm chụp màn hình</code>: Chọn chụp màn hình ở đầu, giữa hoặc cuối phụ đề.</li>
+<li><code>Chất lượng</code>: Chất lượng ảnh chụp màn hình, từ 1-31, số càng nhỏ chất lượng càng cao (và kích thước tệp càng lớn).</li>
+</ul>
+</li>
+<li><strong>Công cụ TTS</strong>: Công cụ nào sẽ được sử dụng để tạo giọng nói khi không có tệp phương tiện hoặc trích xuất âm thanh thất bại. <code>gTTS</code> yêu cầu kết nối với dịch vụ của Google, vui lòng tự xác nhận xem có khả dụng hay không. Cả <code>gTTS</code> và <code>edge-tts</code> đều là những lựa chọn tốt. <code>Không tạo MP3</code> sẽ tắt chức năng này. <code>gTTS</code> yêu cầu kết nối với dịch vụ của Google, vui lòng tự xác nhận xem có khả dụng hay không.</li>
+<li><strong>Giọng nói chậm</strong>: Nếu được chọn, gTTS sẽ tạo giọng nói với tốc độ chậm hơn (edge-tts không hỗ trợ điều này).</li>
+<li><strong>Dọn dẹp phụ đề</strong>: Chọn <code>Xóa... nội dung không phải đối thoại</code> sẽ tự động xóa các nội dung như <code>[Nhạc]</code>, <code>(Tiếng vỗ tay)</code> khỏi phụ đề.</li>
+<li><strong>Tùy chọn chú âm</strong>: Chọn tùy chọn này để thêm chú âm cho tiếng Trung/Nhật/Hàn ở mặt trước hoặc mặt sau.</li>
+<li><strong>Xử lý hậu kỳ</strong>:
+<ul>
+<li><code>Dọn dẹp tệp .mp3/.jpg/.csv</code>: Nếu được chọn, sau khi gói Anki được tạo thành công, các tệp âm thanh, ảnh chụp màn hình và dữ liệu tạm thời được tạo trong quá trình sẽ tự động bị xóa.</li>
+</ul>
+</li>
+<li><strong>Độ lệch dòng thời gian (ms)</strong>: Nếu có độ trễ cố định giữa âm thanh và phụ đề, hãy nhập số mili giây vào đây để điều chỉnh (số dương làm âm thanh sớm hơn, số âm làm âm thanh trễ hơn).</li>
+<li><strong>Khoảng thời gian phụ đề</strong>: Nếu bạn chỉ muốn tạo thẻ cho một phần cụ thể của video, hãy nhập thời gian bắt đầu và kết thúc tại đây (định dạng <code>HH:MM:SS</code>).</li>
+<li><strong>Hợp nhất phụ đề</strong>:
+<ul>
+<li><code>Hợp nhất các dòng phụ đề có thời gian gần nhau</code>: Nếu được chọn, các dòng phụ đề ngắn có khoảng thời gian rất gần nhau sẽ được hợp nhất thành một câu, phù hợp để xử lý các video có nhiều đối thoại. Sử dụng chức năng này một cách thận trọng, nó vẫn chưa hoàn thiện, chỉ phù hợp với các phương tiện truyền thông dạng podcast có khoảng thời gian không đều.</li>
+<li><code>Khoảng cách tối đa (ms)</code>: Xác định khoảng cách gần nhất mà các phụ đề có thể được hợp nhất.</li>
+</ul>
+</li>
+<li><strong>Xử lý tệp</strong>:
+<ul>
+<li><code>Ghi đè gói Anki cùng tên</code>: Nếu được chọn, nếu một tệp có cùng tên đã tồn tại trong thư mục đầu ra, nó sẽ bị ghi đè trực tiếp.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tạo và xem trước</strong>:
+<ul>
+<li><strong>Xem trước 5 thẻ đầu tiên</strong>: Nhanh chóng tạo một tệp HTML mà không cần tạo toàn bộ gói để xem trước hiệu ứng của 5 thẻ đầu tiên trong trình duyệt. Bản xem trước không bao gồm âm thanh và hình ảnh xem trước.</li>
+<li><strong>Tạo gói Anki</strong>: Nhấp để bắt đầu quá trình tạo cuối cùng.</li>
+</ul>
+</li>
+</ol>
+<h3>Tùy chọn: Tạo từ tệp CSV</h3>
+<p>Nếu bạn đã có văn bản đối chiếu song ngữ được sắp xếp, bạn có thể sử dụng chức năng này để nhanh chóng tạo thẻ.</p>
+<ol>
+<li><strong>Chuẩn bị tệp CSV</strong>: Tạo một tệp <code>.csv</code>, với <strong>cột đầu tiên</strong> là văn bản mặt trước của thẻ và <strong>cột thứ hai</strong> là văn bản mặt sau của thẻ. Phải được mã hóa UTF-8. Nếu cần TTS để tạo giọng nói, vui lòng không thêm chú âm hoặc các nội dung khác.</li>
+<li><strong>Tệp CSV</strong>: Trong phần mềm, chọn tệp CSV bạn đã chuẩn bị.</li>
+<li><strong>Tùy chọn cài đặt</strong>: Tương tự như tab &quot;Tạo gói Anki&quot;, bạn có thể đặt thư mục đầu ra, tên gói, công cụ TTS và tùy chọn chú âm. Vui lòng đảm bảo rằng ngôn ngữ mặt trước và mặt sau đã chọn nhất quán với tệp CSV, nếu không có thể dẫn đến phát âm không chính xác.</li>
+<li><strong>Tạo gói Anki</strong>: Nhấp vào nút để bắt đầu tạo. Trong chế độ này, sẽ không có chức năng trích xuất âm thanh và chụp màn hình, và âm thanh sẽ hoàn toàn được tạo bởi TTS.</li>
+</ol>
+<h2>Tab cấu hình</h2>
+<p>Tại đây, bạn có thể tùy chỉnh hành vi mặc định của phần mềm và giao diện thẻ.</p>
+<ul>
+<li><strong>Ngôn ngữ phụ đề mặt trước/mặt sau mặc định</strong>: Đặt các ngôn ngữ bạn thường xuyên sử dụng nhất, và phần mềm sẽ ưu tiên chúng trong quá trình &quot;Tải xuống&quot; và &quot;Tự động điền&quot;.</li>
+<li><strong>Mẫu và kiểu Anki</strong>:
+<ul>
+<li><strong>Mẫu mặt trước/mặt sau</strong>: Sử dụng cú pháp mẫu của Anki (ví dụ: <code>{{Question}}</code>, <code>{{Audio_Answer}}</code>) để tùy chỉnh bố cục của mặt trước và mặt sau của thẻ.</li>
+<li><strong>Bảng kiểu</strong>: Sử dụng mã CSS để tùy chỉnh phông chữ, màu sắc, nền và các giao diện khác của thẻ.</li>
+</ul>
+</li>
+<li><strong>Mẫu HTML xem trước</strong>: Tùy chỉnh cấu trúc cơ bản của tệp HTML được tạo khi nhấp vào nút &quot;Xem trước&quot;. Nói chung, không nên sửa đổi điều này.</li>
+<li><strong>Lưu và khôi phục</strong>:
+<ul>
+<li><code>Lưu cấu hình</code>: Lưu tất cả các thay đổi của bạn đối với các cài đặt trên.</li>
+<li><code>Khôi phục cấu hình</code>: Hoàn tác các thay đổi và khôi phục về trạng thái đã lưu cuối cùng.</li>
+</ul>
+</li>
+</ul>
+<h2>Các câu hỏi thường gặp (FAQ)</h2>
+<ol>
+<li><strong>Hỏi: Phần mềm báo &quot;FFmpeg not found&quot; (Không tìm thấy FFmpeg) thì phải làm sao?</strong>
+    Đáp: Bạn cần tải xuống từ <a href="https://ffmpeg.org/">FFmpeg trang web chính thức</a>, giải nén, sau đó thêm đường dẫn đầy đủ của thư mục <code>bin</code> của nó vào biến môi trường <code>PATH</code> của hệ điều hành của bạn, và sau đó khởi động lại phần mềm này.</li>
+<li><strong>Hỏi: Tại sao liên kết YouTube tôi dán lại báo không hợp lệ?</strong>
+    Đáp: Công cụ này hiện chỉ hỗ trợ URL video đơn lẻ, không hỗ trợ URL danh sách phát (Playlist). Vui lòng đảm bảo rằng liên kết của bạn không chứa tham số <code>list=</code>. Nếu bạn xác nhận muốn sử dụng video từ các trang web khác hoặc sử dụng phần mềm như một giao diện người dùng yt-dlp, thì hãy chọn tùy chọn sau địa chỉ URL để buộc tắt kiểm tra URL.</li>
+<li><strong>Hỏi: Chức năng chú âm hỗ trợ những ngôn ngữ nào?</strong>
+    Đáp: Hiện tại, nó hỗ trợ thêm Furigana cho tiếng Nhật, Pinyin cho tiếng Trung và Romanization cho tiếng Hàn. Phần mềm sẽ tự động xác định dựa trên tên tệp phụ đề bạn đã chọn hoặc ngôn ngữ mặc định trong cấu hình.</li>
+<li><strong>Hỏi: gTTS và edge-tts có gì khác nhau?</strong>
+    Đáp: Cả hai đều là công cụ chuyển văn bản thành giọng nói. gTTS (Google Text-to-Speech) có thể chậm hơn một chút nhưng hỗ trợ phát lại chậm. edge-tts (Microsoft Edge Text-to-Speech) thường có giọng nói tự nhiên hơn, chất lượng cao hơn nhưng không hỗ trợ phát lại chậm. Bạn có thể chọn tùy theo nhu cầu của mình. Nếu một công cụ thất bại, phần mềm sẽ tự động thử công cụ khác.</li>
+<li><strong>Hỏi: Có vấn đề gì khi sử dụng phụ đề tự động của YouTube để tạo gói ANKI không?</strong>
+    Đáp: Điều này khó xác định. Vì phụ đề tự động có thể có nhiều vấn đề về phân đoạn câu, dẫn đến cả giọng nói được tạo và giọng nói được trích xuất đều có thể có vấn đề, vì vậy không nên sử dụng phụ đề tự động; hãy cố gắng sử dụng phụ đề do người tạo cung cấp.</li>
+</ol>
+</body>
+</html>

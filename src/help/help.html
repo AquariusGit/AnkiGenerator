@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Anki Deck Generator - User Manual</title>
+</head>
+<body>
+    <h1>Anki Deck Generator - User Manual</h1>
+<p>Welcome to the Anki Deck Generator! This tool is designed to help you easily and efficiently create bilingual Anki learning cards with audio, screenshots, and original text from your favorite videos and subtitles.
+The code is based on the business-friendly Apache open-source license, and the source code address is <a href="https://github.com/AquariusGit/AnkiGenerator">https://github.com/AquariusGit/AnkiGenerator</a>.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#software-introduction">Software Introduction</a></li>
+<li><a href="#main-features">Main Features</a></li>
+<li><a href="#system-requirements">System Requirements</a></li>
+<li><a href="#first-use">First Use</a></li>
+<li><a href="#interface-overview">Interface Overview</a></li>
+<li><a href="#usage-steps">Usage Steps</a>
+<ul>
+<li><a href="#step-one-download-audiovideo-and-subtitles">Step One: Download Audio/Video and Subtitles</a></li>
+<li><a href="#step-two-generate-anki-deck">Step Two: Generate Anki Deck</a></li>
+<li><a href="#optional-generate-from-csv-file">Optional: Generate from CSV File</a></li>
+</ul>
+</li>
+<li><a href="#configuration-tab">Configuration Tab</a></li>
+<li><a href="#frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</a></li>
+</ul>
+<hr />
+<h2>Software Introduction</h2>
+<p>This tool is a graphical interface application that can download video/audio and multi-language subtitles from video websites like YouTube, and process them into <code>.apkg</code> files that can be imported into Anki. The generated cards can include original sentences, translations, corresponding audio clips, video screenshots, and even automatically add pinyin/furigana/romanization for Chinese, Japanese, and Korean languages, greatly enriching your language learning materials.</p>
+<h2>Main Features</h2>
+<ul>
+<li><strong>Video Download</strong>: Supports downloading videos or pure audio from websites like YouTube.</li>
+<li><strong>Subtitle Download</strong>: Automatically fetches and downloads official subtitles and auto-generated subtitles.</li>
+<li><strong>Bilingual Cards</strong>: One-click generation of Anki cards containing two language subtitles.</li>
+<li><strong>Audio Extraction</strong>: Automatically extracts audio segments corresponding to each subtitle from the video.</li>
+<li><strong>Video Screenshot</strong>: Automatically captures video frames for each card.</li>
+<li><strong>TTS Support</strong>: When no video or audio is available, gTTS or Edge-TTS can be used to generate speech for subtitles.</li>
+<li><strong>Automatic Pronunciation Guides</strong>:
+<ul>
+<li>Automatically adds Furigana for Japanese Kanji.</li>
+<li>Automatically adds Pinyin for Chinese characters.</li>
+<li>Automatically adds Romanization for Korean.</li>
+</ul>
+</li>
+<li><strong>Highly Customizable</strong>:
+<ul>
+<li>Customize Anki card templates and styles.</li>
+<li>Adjust subtitle timeline, merge subtitle lines.</li>
+<li>Multiple post-processing options, such as automatic cleanup of temporary files.</li>
+</ul>
+</li>
+<li><strong>Multi-language Interface</strong>: Supports English, Simplified/Traditional Chinese, Japanese, Korean, Vietnamese, and other interface languages.</li>
+</ul>
+<h2>System Requirements</h2>
+<ul>
+<li><strong>Python</strong>: Python 3.x environment is required.</li>
+<li><strong>FFmpeg</strong>: <strong>FFmpeg</strong> must be installed and added to your system's environment variable (PATH). FFmpeg is used to extract audio and capture screenshots from videos. If not installed correctly, related functions will not be available.</li>
+</ul>
+<h2>First Use</h2>
+<p>When you run this software for the first time, an &quot;Initial Setup&quot; window will pop up.</p>
+<ol>
+<li><strong>Select Display Language</strong>: Choose the language you want the software interface to display.</li>
+<li><strong>Select Default Front/Back Language</strong>: Set your most frequently used source language (front) and target language (back). This will automatically select languages for you in subsequent operations, improving efficiency.</li>
+</ol>
+<p>After setup, click &quot;Continue&quot; to enter the main interface.</p>
+<h2>Interface Overview</h2>
+<p>The main software interface is divided into three main parts:</p>
+<ol>
+<li><strong>Left - Function Tabs</strong>:
+<ul>
+<li><strong>Download Audio/Video and Subtitles</strong>: Download materials from a network URL.</li>
+<li><strong>Generate Anki Deck</strong>: Generate cards using local or downloaded materials.</li>
+<li><strong>Generate Cards from CSV</strong>: Batch generate cards from a <code>.csv</code> file.</li>
+<li><strong>Configuration</strong>: Set up the software's default behavior and Anki templates.</li>
+</ul>
+</li>
+<li><strong>Right - Log Window</strong>: Displays all information, warnings, and errors during software operation.</li>
+<li><strong>Bottom - Progress Bar</strong>: Displays the progress of download or generation.</li>
+</ol>
+<h2>Usage Steps</h2>
+<h3>Step One: Download Audio/Video and Subtitles</h3>
+<p>This tab is used to obtain the necessary materials for creating cards from online videos. However, please note that it is best if the video or audio contains only a single language, such as pure Chinese or pure Japanese. Do not use videos or audio that contain multiple languages simultaneously. For example, a video that first reads Chinese and then Japanese is not suitable. We will consider providing such functionality later.</p>
+<ol>
+<li><strong>Video URL</strong>: Paste a YouTube video link. The software will automatically detect valid links in the clipboard and fill them in. Usually, it's a single video file, not a playlist or a personal video page (which would lead to incorrect downloads or too many files being downloaded). By default, only YouTube videos are supported. If you want to use videos from other websites, check the box after the URL input field to indicate that the URL format should not be checked, then you can download audio/video and subtitles from any website supported by yt-dlp (please verify the results yourself).</li>
+<li><strong>Query Language</strong>: Click this button, and the software will start analyzing the URL to get all available video/audio formats and subtitle languages.</li>
+<li><strong>Download Directory</strong>: Select the folder where you want to save the downloaded files.</li>
+<li><strong>Audio/Video Format</strong>: Select a format from the dropdown list. It is recommended to choose <code>mp4</code> format which includes both audio and video, or <code>m4a</code> format for pure audio.</li>
+<li><strong>Front/Back Subtitle Language</strong>: Select the subtitle languages you want to use for the front and back of the card, respectively. The software will automatically try to select the default language based on your &quot;Configuration&quot;.</li>
+<li><strong>Download Subtitles Only</strong>: If you already have video files locally, or do not want to generate screenshots and original audio, you can check this option to download only subtitle files.</li>
+<li><strong>Start Download</strong>: Click to start the download. After completion, the software will ask if you want to automatically fill the downloaded file paths into the &quot;Generate Anki Deck&quot; tab. It is recommended to choose &quot;Yes&quot;.</li>
+</ol>
+<h3>Step Two: Generate Anki Deck</h3>
+<p>This tab is where the core functionality lies, used to combine materials into Anki cards.</p>
+<ol>
+<li><strong>File Path Settings</strong>:
+<ul>
+<li><strong>Media File (Optional)</strong>: Select your video or audio file. This is required if you want to extract audio and screenshots from the video.</li>
+<li><strong>Front/Back Subtitle Files</strong>: Select subtitle files for two languages (<code>.srt</code> or <code>.vtt</code> format).</li>
+<li><strong>Output Directory</strong>: Select the location to save the generated Anki deck (<code>.apkg</code>) and temporary files (if the directory does not exist, it will be created automatically).</li>
+<li><strong>Anki Deck Name</strong>: Name your Anki deck, by default it will be the same as the front subtitle filename.</li>
+</ul>
+</li>
+<li><strong>Main Options</strong>:
+<ul>
+<li><strong>Screenshot Options</strong>:
+<ul>
+<li><code>Add Screenshot</code>: Check this to generate a screenshot for each card.</li>
+<li><code>Screenshot Time Point</code>: Choose to take the screenshot at the beginning, middle, or end of the subtitle.</li>
+<li><code>Quality</code>: Screenshot quality, between 1-31, smaller number means higher quality (and larger file size).</li>
+</ul>
+</li>
+<li><strong>TTS Engine</strong>: Which engine to use to generate speech when no media file is available or audio extraction fails. <code>gTTS</code> requires connection to Google services, please confirm if it is available. Both <code>gTTS</code> and <code>edge-tts</code> are good choices. <code>Do not generate MP3</code> disables this function. <code>gTTS</code> requires connection to Google services, please confirm if it is available.</li>
+<li><strong>Slow Speech</strong>: If checked, gTTS will generate speech at a slower speed (edge-tts does not support this).</li>
+<li><strong>Subtitle Cleanup</strong>: Checking <code>Remove... non-dialogue content</code> will automatically delete content like <code>[Music]</code>, <code>(Applause)</code> from subtitles.</li>
+<li><strong>Pronunciation Guide Options</strong>: Check this to add pronunciation guides for Chinese/Japanese/Korean on the front or back.</li>
+<li><strong>Post-processing</strong>:
+<ul>
+<li><code>Clean .mp3/.jpg/.csv files</code>: If checked, temporary audio, screenshots, and data files generated during the process will be automatically deleted after the Anki deck is successfully generated.</li>
+</ul>
+</li>
+<li><strong>Timeline Offset (ms)</strong>: If there is a fixed delay between audio and subtitles, enter the milliseconds here to correct it (positive number makes audio earlier, negative number makes audio later).</li>
+<li><strong>Subtitle Time Range</strong>: If you only want to create cards for a specific part of the video, enter the start and end times here (format <code>HH:MM:SS</code>).</li>
+<li><strong>Subtitle Merging</strong>:
+<ul>
+<li><code>Merge closely timed subtitle lines</code>: If checked, short subtitle lines with very close time intervals will be merged into one sentence, suitable for processing dialogue-intensive videos. Use this function with caution, it is not yet mature, and is only suitable for podcast-like media with irregular intervals.</li>
+<li><code>Maximum Interval (ms)</code>: Defines how close subtitles can be merged.</li>
+</ul>
+</li>
+<li><strong>File Handling</strong>:
+<ul>
+<li><code>Overwrite existing Anki deck</code>: If checked, if a file with the same name already exists in the output directory, it will be overwritten directly.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Generate and Preview</strong>:
+<ul>
+<li><strong>Preview first 5 cards</strong>: Quickly generate an HTML file without generating the full deck to preview the effect of the first 5 cards in a browser. The preview does not include audio and preview images.</li>
+<li><strong>Generate Anki Deck</strong>: Click to start the final generation process.</li>
+</ul>
+</li>
+</ol>
+<h3>Optional: Generate from CSV File</h3>
+<p>If you already have organized bilingual comparison text, you can use this function to quickly create cards.</p>
+<ol>
+<li><strong>Prepare CSV File</strong>: Create a <code>.csv</code> file, with the <strong>first column</strong> as the front text of the card and the <strong>second column</strong> as the back text of the card. It must be UTF-8 encoded. If you need TTS to generate speech, do not add pronunciation guides or other content.</li>
+<li><strong>CSV File</strong>: Select your prepared CSV file in the software.</li>
+<li><strong>Settings Options</strong>: Similar to the &quot;Generate Anki Deck&quot; tab, you can set the output directory, deck name, TTS engine, and pronunciation guide options. Please ensure that the selected front and back languages are consistent with the CSV file, otherwise, it may lead to incorrect pronunciation.</li>
+<li><strong>Generate Anki Deck</strong>: Click the button to start generation. In this mode, there will be no audio extraction and screenshot functions, and audio will be entirely generated by TTS.</li>
+</ol>
+<h2>Configuration Tab</h2>
+<p>Here you can customize the software's default behavior and card appearance.</p>
+<ul>
+<li><strong>Default Front/Back Subtitle Language</strong>: Set your most frequently used languages, and the software will prioritize them during &quot;Download&quot; and &quot;Auto-fill&quot;.</li>
+<li><strong>Anki Templates and Styles</strong>:
+<ul>
+<li><strong>Front/Back Template</strong>: Use Anki's template syntax (e.g., <code>{{Question}}</code>, <code>{{Audio_Answer}}</code>) to customize the layout of the front and back of the card.</li>
+<li><strong>Stylesheet</strong>: Use CSS code to customize the font, color, background, and other appearances of the card.</li>
+</ul>
+</li>
+<li><strong>Preview HTML Template</strong>: Customize the basic structure of the HTML file generated when clicking the &quot;Preview&quot; button. Generally, it is not recommended to modify this.</li>
+<li><strong>Save and Restore</strong>:
+<ul>
+<li><code>Save Configuration</code>: Save all your changes to the above settings.</li>
+<li><code>Restore Configuration</code>: Undo changes and restore to the last saved state.</li>
+</ul>
+</li>
+</ul>
+<h2>Frequently Asked Questions (FAQ)</h2>
+<ol>
+<li><strong>Q: What should I do if the software prompts &quot;FFmpeg not found&quot;?</strong>
+    A: You need to download it from the <a href="https://ffmpeg.org/">FFmpeg official website</a>, extract it, add the full path of its <code>bin</code> directory to your operating system's <code>PATH</code> environment variable, and then restart the software.</li>
+<li><strong>Q: Why is the YouTube link I pasted invalid?</strong>
+    A: This tool currently only supports single video URLs, not playlist URLs. Please ensure that your link does not contain the <code>list=</code> parameter. If you confirm that you want to use videos from other websites or use the software as a yt-dlp UI, then check the box after the URL address to force disable URL checking.</li>
+<li><strong>Q: Which languages are supported for the pronunciation guide function?</strong>
+    A: Currently, it supports adding Furigana for Japanese, Pinyin for Chinese, and Romanization for Korean. The software will automatically determine based on your selected subtitle filename or the default language in the configuration.</li>
+<li><strong>Q: What is the difference between gTTS and edge-tts?</strong>
+    A: Both are text-to-speech engines. gTTS (Google Text-to-Speech) may be slightly slower but supports slow playback. edge-tts (Microsoft Edge Text-to-Speech) usually has more natural and higher-quality speech but does not support slow playback. You can choose according to your needs. If one engine fails, the software will automatically try the other.</li>
+<li><strong>Q: Is there a problem with generating Anki decks using YouTube's automatic subtitles?</strong>
+    A: It's hard to say for sure. Because automatic subtitles may have many issues with sentence segmentation, which can lead to problems with both generated and extracted audio. Therefore, it is not highly recommended to use automatic subtitles; try to use subtitles provided by the creator whenever possible.</li>
+</ol>
+</body>
+</html>

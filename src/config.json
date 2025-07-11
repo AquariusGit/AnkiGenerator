@@ -1,0 +1,14 @@
+{
+    "download_directory": "C:/temp/youtube/test",
+    "anki_templates": {
+        "front": "{{Question}}\n\n{{#Audio_Question}}\n\t{{Audio_Question}}\n{{/Audio_Question}} \n\n{{#Screenshot}} \n\t{{Screenshot}}\n{{/Screenshot}}",
+        "back": "{{Answer}}\n\n{{#Audio_Answer}} \n\t{{Audio_Answer}}\n{{/Audio_Answer}}\n\n{{#Screenshot}} \n\t{{Screenshot}}\n{{/Screenshot}}"
+    },
+    "anki_style": ".card {\n    font-family: arial;\n    font-size: 24px;\n    text-align: left;\n    color: black;\n    background-color: white;\n}",
+    "preferred_front_language": "zh-hans",
+    "preferred_back_language": "ja",
+    "tts_engine": "edge-tts",
+    "preview_html_template": "<!DOCTYPE html><html lang=\"zh\"><head><meta charset=\"UTF-8\"><title>Anki 卡片预览</title>\n        <style>\n            body { font-family: sans-serif; background-color: #f0f0f0; padding: 20px; }\n            h1 { text-align: center; color: #333; }\n            .card-container { background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }\n            .card-side h3 { color: #777; font-size: 1em; margin-top: 0; }\n            hr { border: 0; border-top: 1px solid #ddd; margin: 20px 0; }\n            {{style}}\n            .anki-back { display: block !important; }\n            ruby rt { font-size: 0.7em; }\n        </style></head><body><h1>Anki 卡片预览</h1>{{cards_html}}</body></html>",
+    "dont_validate_url": false,
+    "language": "zh-Hans"
+}

@@ -1,0 +1,10 @@
+pyperclip
+yt-dlp
+pysrt
+pydub
+gtts
+edge-tts
+genanki
+pykakasi
+pypinyin
+korean-romanizer

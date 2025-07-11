@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <title>Anki 卡片包產生器 - 使用說明書</title>
+</head>
+<body>
+    <h1>Anki 卡片包產生器 - 使用說明書</h1>
+<p>歡迎使用 Anki 卡片包產生器！本工具旨在幫助您從喜愛的影片和字幕中，輕鬆、高效地建立包含音訊、截圖和原文的雙語 Anki 學習卡片。
+程式碼基於商業友善的 Apache 開源協議，原始碼位址為 <a href="https://github.com/AquariusGit/AnkiGenerator">https://github.com/AquariusGit/AnkiGenerator</a>。</p>
+<h2>目錄</h2>
+<ul>
+<li><a href="#軟體簡介">軟體簡介</a></li>
+<li><a href="#主要功能">主要功能</a></li>
+<li><a href="#系統要求">系統要求</a></li>
+<li><a href="#初次使用">初次使用</a></li>
+<li><a href="#介面概覽">介面概覽</a></li>
+<li><a href="#使用步驟">使用步驟</a>
+<ul>
+<li><a href="#第一步下載音訊影片和字幕">第一步：下載音訊/影片和字幕</a></li>
+<li><a href="#第二步產生-anki-卡片包">第二步：產生 Anki 卡片包</a></li>
+<li><a href="#可選從-csv-檔案產生">可選：從 CSV 檔案產生</a></li>
+</ul>
+</li>
+<li><a href="#設定選項卡">設定選項卡</a></li>
+<li><a href="#常見問題-faq">常見問題 (FAQ)</a></li>
+</ul>
+<hr />
+<h2>軟體簡介</h2>
+<p>本工具是一個圖形化介面的應用程式，可以從 YouTube 等影片網站下載影片/音訊和多語言字幕，並將其處理成可以匯入 Anki 的 <code>.apkg</code> 檔案。產生的卡片可以包含句子原文、譯文、對應的音訊片段、影片截圖，甚至為中日韓語言自動新增拼音/注音，極大地豐富了您的語言學習材料。</p>
+<h2>主要功能</h2>
+<ul>
+<li><strong>影片下載</strong>: 支援從 YouTube 等網站下載影片或純音訊。</li>
+<li><strong>字幕下載</strong>: 自動取得並下載官方字幕和自動產生字幕。</li>
+<li><strong>雙語卡片</strong>: 一鍵產生包含兩種語言字幕的 Anki 卡片。</li>
+<li><strong>音訊提取</strong>: 自動從影片中截取每條字幕對應的音訊片段。</li>
+<li><strong>影片截圖</strong>: 自動為每張卡片截取影片畫面。</li>
+<li><strong>TTS 支援</strong>: 當沒有影片或音訊時，可使用 gTTS 或 Edge-TTS 為字幕產生語音。</li>
+<li><strong>自動注音</strong>:
+<ul>
+<li>為日文漢字自動新增假名 (Furigana)。</li>
+<li>為中文漢字自動新增拼音 (Pinyin)。</li>
+<li>為韓文自動新增羅馬音 (Romanization)。</li>
+</ul>
+</li>
+<li><strong>高度可自訂</strong>:
+<ul>
+<li>自訂 Anki 卡片範本和樣式。</li>
+<li>調整字幕時間軸、合併字幕行。</li>
+<li>多種後期處理選項，如自動清理臨時檔案。</li>
+</ul>
+</li>
+<li><strong>多語言介面</strong>: 支援英語、簡繁中文、日語、韓語、越南語等多種介面語言。</li>
+</ul>
+<h2>系統要求</h2>
+<ul>
+<li><strong>Python</strong>: 需要安裝 Python 3.x 環境。</li>
+<li><strong>FFmpeg</strong>: 必須安裝 <strong>FFmpeg</strong> 並將其新增到系統的環境變數 (PATH) 中。FFmpeg 用於從影片中提取音訊和截取螢幕截圖。如果未正確安裝，相關功能將無法使用。</li>
+</ul>
+<h2>初次使用</h2>
+<p>當您第一次執行本軟體時，會彈出一個「初始設定」視窗。</p>
+<ol>
+<li><strong>選擇顯示語言</strong>: 選擇您希望軟體介面顯示的語言。</li>
+<li><strong>選擇預設正面/背面語言</strong>: 設定您最常用的來源語言（正面）和目標語言（背面）。這將在後續操作中為您自動選擇語言，提高效率。</li>
+</ol>
+<p>設定完成後，點擊「繼續」即可進入主介面。</p>
+<h2>介面概覽</h2>
+<p>軟體主介面分為三個主要部分：</p>
+<ol>
+<li><strong>左側 - 功能選項卡</strong>:
+<ul>
+<li><strong>下載音訊/影片和字幕</strong>: 從網路 URL 下載素材。</li>
+<li><strong>產生 Anki 包</strong>: 使用本地或下載的素材產生卡片。</li>
+<li><strong>利用 CSV 產生卡片</strong>: 從一個 <code>.csv</code> 檔案批次產生卡片。</li>
+<li><strong>設定</strong>: 對軟體的預設行為和 Anki 範本進行設定。</li>
+</ul>
+</li>
+<li><strong>右側 - 日誌視窗</strong>: 顯示軟體執行過程中的所有資訊、警告和錯誤。</li>
+<li><strong>底部 - 進度條</strong>: 顯示下載或產生過程的進度。</li>
+</ol>
+<h2>使用步驟</h2>
+<h3>第一步：下載音訊/影片和字幕</h3>
+<p>此選項卡用於從線上影片取得製作卡片所需的素材。但請注意，影片或者音訊中最好是只有單一類語言，比如純中文或者純日文，不要使用同時包含多種語言的影片或者音訊。比如先讀中文，再讀日文的影片，就不太合適。後續再看是否需要提供這類功能。</p>
+<ol>
+<li><strong>影片 URL</strong>: 貼上一個 YouTube 影片連結。軟體會自動偵測剪貼簿中的有效連結並填入。通常為單一檔案影片，不能是列表或者個人影片頁面（這會導致無法正確下載或者下載過多檔案）。預設僅支援 Youtube 影片。如果想使用其他網站上的影片，請將 URL 輸入框後的勾選框選中，表示不檢查 URL 格式，則可以下載 yt-dlp 支援的任何網站的音訊/影片和字幕（結果請自行確認）。</li>
+<li><strong>查詢語言</strong>: 點擊此按鈕，軟體將開始分析 URL，取得所有可用的影片/音訊格式和字幕語言。</li>
+<li><strong>下載目錄</strong>: 選擇您希望儲存下載檔案的資料夾。</li>
+<li><strong>音訊/影片格式</strong>: 從下拉式清單中選擇一個格式。推薦選擇包含音訊和影片的 <code>mp4</code> 格式，或純音訊的 <code>m4a</code> 格式。</li>
+<li><strong>正面/背面字幕語言</strong>: 分別選擇卡片正面和背面想要使用的字幕語言。軟體會根據您的「設定」自動嘗試選擇預設語言。</li>
+<li><strong>僅下載字幕</strong>: 如果您本地已有影片檔案，或者不想產生截圖及原始音訊，可以勾選此項，只下載字幕檔案。</li>
+<li><strong>開始下載</strong>: 點擊後開始下載。完成後，軟體會提示您是否將下載好的檔案路徑自動填入到「產生 Anki 包」選項卡。建議選擇「是」。</li>
+</ol>
+<h3>第二步：產生 Anki 卡片包</h3>
+<p>此選項卡是核心功能所在，用於將素材組合成 Anki 卡片。</p>
+<ol>
+<li><strong>檔案路徑設定</strong>:
+<ul>
+<li><strong>媒體檔案(可選)</strong>: 選擇您的影片或音訊檔案。如果您想從影片中提取音訊和截圖，此項為必填。</li>
+<li><strong>正面/背面字幕檔案</strong>: 選擇兩種語言的字幕檔案 (<code>.srt</code> 或 <code>.vtt</code> 格式)。</li>
+<li><strong>輸出目錄</strong>: 選擇產生的 Anki 包 (<code>.apkg</code>) 和臨時檔案的存放位置（如果目錄不存在，會自動建立）。</li>
+<li><strong>Anki 包名稱</strong>: 為您的 Anki 卡片包命名，預設與正面字幕檔案名一樣。</li>
+</ul>
+</li>
+<li><strong>主要選項</strong>:
+<ul>
+<li><strong>截圖選項</strong>:
+<ul>
+<li><code>新增截圖</code>: 勾選後會為每張卡片產生截圖。</li>
+<li><code>截圖時間點</code>: 選擇在字幕的開始、中間還是結尾進行截圖。</li>
+<li><code>品質</code>: 截圖品質，1-31 之間，數字越小品質越高（檔案也越大）。</li>
+</ul>
+</li>
+<li><strong>TTS 引擎</strong>: 當沒有媒體檔案或提取音訊失敗時，使用哪個引擎產生語音。<code>gTTS</code> 需要連接 Google 服務，請自行確認是否可用。 和 <code>edge-tts</code> 都是不錯的選擇。<code>不產生 MP3</code> 則禁用此功能。其中 <code>gTTS</code> 需要連接 Google 服務，請自行確認是否可用。</li>
+<li><strong>慢速語音</strong>: 勾選後，gTTS 會以較慢的語速產生語音（edge-tts 不支援）。</li>
+<li><strong>字幕清理</strong>: 勾選 <code>移除...非對話內容</code> 會自動刪除字幕中如 <code>[音樂]</code>、<code>(掌聲)</code> 等內容。</li>
+<li><strong>注音選項</strong>: 勾選後會為正面或背面的中/日/韓文新增注音。</li>
+<li><strong>後期處理</strong>:
+<ul>
+<li><code>清理 .mp3/.jpg/.csv 檔案</code>: 勾選後，在 Anki 包成功產生後，會自動刪除過程中產生的臨時音訊、截圖和資料檔案。</li>
+</ul>
+</li>
+<li><strong>時間軸偏移(ms)</strong>: 如果音訊和字幕有固定的延遲，在此輸入毫秒數進行校正（正數使音訊提前，負數使音訊延遲）。</li>
+<li><strong>字幕時間段</strong>: 如果您只想製作影片中某一部分的卡片，在此輸入開始和結束時間 (格式 <code>HH:MM:SS</code>)。</li>
+<li><strong>字幕合併</strong>:
+<ul>
+<li><code>合併時間接近的字幕行</code>: 勾選後，會將時間間隔很近的短字幕合併成一句，適合處理對話密集的影片。謹慎使用該功能，目前尚不成熟，僅對那些間隔時間比較隨意的 podcast 類媒體可以嘗試。</li>
+<li><code>最大間隔(ms)</code>: 定義多近的字幕可以被合併。</li>
+</ul>
+</li>
+<li><strong>檔案處理</strong>:
+<ul>
+<li><code>覆蓋同名 Anki 包</code>: 勾選後，如果輸出目錄中已存在同名檔案，會直接覆蓋。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>產生與預覽</strong>:
+<ul>
+<li><strong>預覽前 5 張卡片</strong>: 在不產生完整包的情況下，快速產生一個 HTML 檔案，在瀏覽器中預覽前 5 張卡片的效果。預覽中不包含音訊和預覽圖。</li>
+<li><strong>產生 Anki 包</strong>: 點擊開始最終的產生過程。</li>
+</ul>
+</li>
+</ol>
+<h3>可選：從 CSV 檔案產生</h3>
+<p>如果您已經有整理好的雙語對照文字，可以使用此功能快速製卡。</p>
+<ol>
+<li><strong>準備 CSV 檔案</strong>: 建立一個 <code>.csv</code> 檔案，<strong>第一欄</strong>為卡片正面文字，<strong>第二欄</strong>為卡片背面文字。必須使用 UTF-8 編碼。如果需要 tts 產生語音，請不要新增注音等內容。</li>
+<li><strong>CSV 檔案</strong>: 在軟體中選擇您準備好的 CSV 檔案。</li>
+<li><strong>設定選項</strong>: 與「產生 Anki 包」選項卡類似，您可以設定輸出目錄、包名稱、TTS 引擎和注音選項。請保證選中的正面和背面語言與 CSV 檔案保持一致，否則會導致發音不正確。</li>
+<li><strong>產生 Anki 包</strong>: 點擊按鈕開始產生。此模式下不會有音訊提取和截圖功能，音訊將完全依賴 TTS 產生。</li>
+</ol>
+<h2>設定選項卡</h2>
+<p>在這裡您可以自訂軟體的預設行為和卡片外觀。</p>
+<ul>
+<li><strong>預設正面/背面字幕語言</strong>: 設定您最常用的語言，軟體會在「下載」和「自動填入」時優先使用它們。</li>
+<li><strong>Anki 範本和樣式</strong>:
+<ul>
+<li><strong>正面/背面範本</strong>: 使用 Anki 的範本語法（如 <code>{{Question}}</code>, <code>{{Audio_Answer}}</code>）自訂卡片正反面的佈局。</li>
+<li><strong>樣式表</strong>: 使用 CSS 程式碼自訂卡片的字型、顏色、背景等外觀。</li>
+</ul>
+</li>
+<li><strong>預覽 HTML 範本</strong>: 自訂點擊「預覽」按鈕時產生的 HTML 檔案的基礎結構。一般不建議修改。</li>
+<li><strong>儲存與恢復</strong>:
+<ul>
+<li><code>儲存設定</code>: 儲存您對以上所有設定的更改。</li>
+<li><code>恢復設定</code>: 撤銷更改，恢復到上次儲存的狀態。</li>
+</ul>
+</li>
+</ul>
+<h2>常見問題 (FAQ)</h2>
+<ol>
+<li><strong>問：軟體提示 &quot;FFmpeg not found&quot; (未找到 FFmpeg) 怎麼辦？</strong>
+    答：您需要從 <a href="https://ffmpeg.org/">FFmpeg 官方網站</a> 下載它，解壓縮後，將其 <code>bin</code> 目錄的完整路徑新增到您作業系統的環境變數 <code>PATH</code> 中，然後重新啟動本軟體。</li>
+<li><strong>問：為什麼我貼上的 YouTube 連結提示無效？</strong>
+    答：本工具目前只支援單一影片的 URL，不支援播放清單 (Playlist) 的 URL。請確保您的連結中不包含 <code>list=</code> 參數。如果您確認想使用其他網站影片或者把軟體當作一個 yt-dlp 的 UI，那麼請把 URL 地址後面的勾選項選中，強制去除 URL 的檢查。</li>
+<li><strong>問：注音功能支援哪些語言？</strong>
+    答：目前支援為日語新增假名、為中文新增拼音、為韓語新增羅馬音。軟體會根據您選擇的字幕檔案名或設定中的預設語言自動判斷。</li>
+<li><strong>問：gTTS 和 edge-tts 有什麼區別？</strong>
+    答：兩者都是文字轉語音引擎。gTTS (Google Text-to-Speech) 速度可能稍慢，但支援慢速播放。edge-tts (Microsoft Edge Text-to-Speech) 的語音通常更自然、品質更高，但不支持慢速播放。您可以根據需要選擇。如果一個引擎失敗，軟體會自動嘗試另一個。</li>
+<li><strong>問：使用 YouTube 自動化字幕產生 ANKI 包是否有問題？</strong>
+    答：這點不好確定。因為自動化的字幕，其中的斷句可能存在很多問題，導致產生的語音和截取的語音都可以存在問題，所以不是非常建議使用自動化字幕，盡可能使用建立者提供的字幕。</li>
+</ol>
+</body>
+</html>
