@@ -558,6 +558,8 @@ class AnkiGeneratorApp:
 
             # 保存预览文件
             preview_file = os.path.join(anki_config.output_dir, "anki_csv_preview.html")
+            self.check_output_directory(anki_config.output_dir)
+            
             with open(preview_file, "w", encoding="utf-8") as f:
                 f.write(html_content)
 
@@ -2189,6 +2191,16 @@ class AnkiGeneratorApp:
 
         return preview_html_template.replace("{{style}}", style).replace("{{cards_html}}", cards_html)
 
+    def check_output_directory(self,output_dir:str):
+        # 创建输出目录（如果不存在）
+        if not os.path.exists(output_dir):
+            try:
+                os.makedirs(output_dir)
+                self.logger.info(_("log_created_download_dir", output_dir))
+            except Exception as e:
+                self.logger.error(_("error_creating_download_dir", e))
+                return
+
     def generate_anki_package(self):
         # 获取输入参数
         media_file = self.media_entry.get()
@@ -2215,14 +2227,7 @@ class AnkiGeneratorApp:
             self.logger.error(_("error_need_package_name"))
             return
         
-        # 创建输出目录（如果不存在）
-        if not os.path.exists(output_dir):
-            try:
-                os.makedirs(output_dir)
-                self.logger.info(_("log_created_download_dir", output_dir))
-            except Exception as e:
-                self.logger.error(_("error_creating_download_dir", e))
-                return
+        self.check_output_directory(output_dir)
         
         # 禁用生成按钮，防止重复点击
         self.generate_button["state"] = "disabled"
