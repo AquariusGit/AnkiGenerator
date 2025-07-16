@@ -1,2 +1,5 @@
 .obsidian/
 .history
+__pycache__
+src/config.json
+config.json
