@@ -8,9 +8,8 @@ gTTS==2.5.1
 eng-to-ipa==0.0.2
 pykakasi==2.2.1
 pypinyin==0.51.0
-korean-romanizer==0.1.7
+korean-romanizer==0.22.0
 pyttsx3==2.90
-pyinstaller==6.8.0
 webvtt-py==0.4.6
 Pillow==10.3.0
 beautifulsoup4==4.12.3
