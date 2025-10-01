@@ -2,7 +2,7 @@
 set "PYTHON=python"
 set "VENV_DIR=.\venv"
 
-REM 检查 Python 是否安装
+REM Check if Python is installed
 %PYTHON% --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo Python is not installed or not in PATH.
@@ -10,7 +10,7 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM 检查并创建 venv 环境
+REM Check and create venv environment
 if not exist "%VENV_DIR%\Scripts\activate" (
     echo Creating virtual environment...
     %PYTHON% -m venv %VENV_DIR%
@@ -35,9 +35,7 @@ if not exist "%VENV_DIR%\Scripts\activate" (
     )
 )
 
-REM 会报 使用pydub库 报ModuleNotFoundError: No module named 'audioop'
-
-REM 激活 venv 并运行程序
+REM Activate venv and run the application
 echo Activating virtual environment and starting the application...
 call %VENV_DIR%\Scripts\activate.bat
 %PYTHON% app\aquarius\main.py
