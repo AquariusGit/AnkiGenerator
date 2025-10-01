@@ -1,0 +1,228 @@
+<h1 id="anki-卡片包生成器---使用说明">Anki 卡片包生成器 - 使用说明</h1>
+<p>欢迎使用 Anki
+卡片包生成器！本工具旨在帮助您从喜爱的视频和字幕中，轻松、高效地创建包含音频、截图和原文的双语Anki学习卡片。
+您也可以将自己珍藏许久的单词或者例句，以CSV的方式快速生成双语Anki学习卡片（并生成语音）。
+代码基于商业友好的Apache开源协议，源码地址为 <a
+href="https://github.com/AquariusGit/AnkiGenerator">https://github.com/AquariusGit/AnkiGenerator</a>。</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#软件简介">软件简介</a></li>
+<li><a href="#主要功能">主要功能</a></li>
+<li><a href="#系统要求">系统要求</a></li>
+<li><a href="#初次使用">初次使用</a></li>
+<li><a href="#界面概览">界面概览</a></li>
+<li><a href="#使用步骤">使用步骤</a>
+<ul>
+<li><a href="#第一步下载音视频和字幕">第一步：下载音视频和字幕</a></li>
+<li><a href="#第二步生成anki卡片包">第二步：生成Anki卡片包</a></li>
+<li><a href="#可选从csv文件生成">可选：从CSV文件生成</a></li>
+</ul></li>
+<li><a href="#配置选项卡">配置选项卡</a></li>
+<li><a href="#常见问题-faq">常见问题 (FAQ)</a></li>
+</ul>
+<hr />
+<h2 id="软件简介">软件简介</h2>
+<p>本工具是一个图形化界面的应用程序，可以从YouTube等视频网站下载视频/音频和多语言字幕，并将其处理成可以导入Anki的
+<code>.apkg</code>
+文件。生成的卡片可以包含句子原文、译文、对应的音频片段、视频截图，甚至为中日韩等多种语言自动添加拼音/注音，极大地丰富了您的语言学习材料。</p>
+<h2 id="主要功能">主要功能</h2>
+<ul>
+<li><strong>视频下载</strong>:
+支持从YouTube等网站下载视频或纯音频。</li>
+<li><strong>字幕下载</strong>:
+自动获取并下载官方字幕(因为Youtube不允许匿名下载自动生成的字幕，如果想支持该功能，请参考FAQ中的内容)。</li>
+<li><strong>双语卡片</strong>: 一键生成包含两种语言字幕的Anki卡片。</li>
+<li><strong>音频提取</strong>:
+自动从视频中截取每条字幕对应的音频片段。</li>
+<li><strong>视频截图</strong>:
+自动为每张卡片截取视频画面，或者从网络下载。</li>
+<li><strong>CSV支持</strong>:
+通过使用两列的CSV格式的文件生成TTS语音并生成Anki卡片。</li>
+<li><strong>TTS支持</strong>:
+当没有视频或音频时，可使用gTTS或Edge-TTS等工具为字幕生成语音。</li>
+<li><strong>自动注音</strong>:
+<ul>
+<li>为日文汉字自动添加假名 (Furigana)。</li>
+<li>为中文汉字自动添加拼音 (Pinyin)。</li>
+<li>为韩文自动添加罗马音 (Romanization)。</li>
+</ul></li>
+<li><strong>高度可定制</strong>:
+<ul>
+<li>自定义Anki卡片模板和样式。</li>
+<li>调整字幕时间轴。</li>
+<li>多种后期处理选项，如自动清理临时文件。</li>
+</ul></li>
+<li><strong>多语言界面</strong>:
+支持英语、简繁中文、日语、韩语，越南语等多种界面语言。</li>
+</ul>
+<h2 id="系统要求">系统要求</h2>
+<ul>
+<li><strong>Python</strong>: 需要安装 Python 3.x 环境。</li>
+<li><strong>FFmpeg</strong>: 可选安装 <strong>FFmpeg</strong>
+，并将其添加到系统的环境变量 (PATH)
+中。FFmpeg用于从视频中提取音频和截取屏幕截图。如果未正确安装，相关功能将无法使用。如果确认不安装FFmpeg，使用时，请不要选择<code>原始</code>语音。</li>
+</ul>
+<h2 id="初次使用">初次使用</h2>
+<p>当您第一次运行本软件时，默认使用当前系统的语言，如果不支持当前系统的语言，则会切换到英文。</p>
+<h2 id="界面概览">界面概览</h2>
+<p>软件主界面分为三个主要部分：</p>
+<p>1.<strong>左侧 - 功能选项卡</strong>:</p>
+<ul>
+<li><strong>下载音视频和字幕</strong>: 从Youtube下载素材。</li>
+<li><strong>使用字幕生成Anki包</strong>:
+使用本地或下载的素材生成卡片。</li>
+<li><strong>使用CSV生成卡片</strong>:
+从一个<code>.csv</code>文件批量生成卡片。</li>
+<li><strong>配置</strong>: 对软件的默认行为和Anki模板进行设置。</li>
+</ul>
+<p>2.<strong>右侧 - 日志窗口</strong>:
+显示软件运行过程中的所有信息、警告和错误。</p>
+<p>3.<strong>底部 - 进度条</strong>: 显示下载或生成过程的进度。</p>
+<h2 id="使用步骤">使用步骤</h2>
+<h3 id="第一步下载音视频和字幕">第一步：下载音视频和字幕</h3>
+<p>此选项卡用于从在线视频获取制作卡片所需的素材。但请注意，视频或者音频中最好是只有单一类语言，比如纯中文或者纯日文，不要使用同时包含多种语言的视频或者音频。比如先读中文，再读日文的视频，就不太合适。</p>
+<ol type="1">
+<li><strong>视频URL</strong>:
+请输入一个YouTube视频链接,该链接通常为单文件视频，不能是列表或者个人视频面（这会导致无法正确下载或者下载过多文件）。默认仅支持Youtube视频。如果想使用其它网站上的视频，请将URL输入框后的勾选框选中，表示不检查URL格式，则可以下载yt-dlp支持的任何网站的音视频和字幕（结果请自行确认）。</li>
+<li><strong>查询语言</strong>:
+点击此按钮，软件将开始分析URL，获取所有可用的视频/音频格式和字幕语言。</li>
+<li><strong>下载目录</strong>:
+选择您希望保存下载文件的文件夹，如果不存在，通常会自动创建。</li>
+<li><strong>音视频格式</strong>:
+从下拉列表中选择一个格式。推荐选择包含音频和视频的 <code>mp4</code>
+格式，或纯音频的 <code>m4a</code> 格式。</li>
+<li><strong>正面/背面字幕语言</strong>:
+分别选择卡片正面和背面想要使用的字幕语言。软件会根据您的<code>配置</code>自动尝试选择默认语言。</li>
+<li><strong>仅下载字幕</strong>:
+如果您本地已有视频文件，或者不想生成截图及原始音频，可以勾选此项，只下载字幕文件。</li>
+<li><strong>开始下载</strong>:
+点击后开始下载。完成后，软件会提示您是否将下载好的文件路径自动填充到<code>生成Anki包</code>选项卡。建议选择<code>是</code>。</li>
+</ol>
+<h3
+id="第二步基于字幕生成anki卡片包">第二步：基于字幕生成Anki卡片包</h3>
+<p>此选项卡是核心功能所在，用于将字幕及视频等素材组合成Anki卡片包。</p>
+<ol type="1">
+<li><strong>文件路径设置</strong>:
+<ul>
+<li><strong>媒体文件(可选)</strong>:
+选择您的视频或音频文件。如果您想从视频中提取音频和截图，此项为必填。</li>
+<li><strong>正面/背面字幕文件</strong>: 选择两种语言的字幕文件
+(<code>.srt</code> 或 <code>.vtt</code>格式)。</li>
+<li><strong>输出目录</strong>: 选择生成的Anki包 (<code>.apkg</code>)
+和临时文件的存放位置（如果目录不存在，会自动创建）。</li>
+<li><strong>Anki包名称</strong>:
+为您的Anki卡片包命名，默认与正面字幕文件名一样。</li>
+</ul></li>
+<li><strong>主要选项</strong>:
+<ul>
+<li><strong>截图选项</strong>:
+<ul>
+<li><code>添加截图</code>:
+勾选后会为每张卡片生成截图（来源由用户指定，可能是视频截图，也可以是google/baidu/bing等搜索引擎通过关键字搜索后得到的第一张图片）。这一项不仅生成速度极慢（有大量的网络请求，也有较大的失败可能），而且会导致生成的Anki卡片包占用极大空间，请慎重考虑使用该功能。</li>
+<li><code>截图时间点</code>:
+如果是视频截图，则选择在字幕的开始、中间还是结尾进行截图。</li>
+<li><code>质量</code>:
+截图质量，1-31之间，数字越小质量越高（文件也越大）。</li>
+</ul></li>
+<li><strong>TTS引擎</strong>:
+当没有媒体文件或提取音频失败时，使用哪个引擎生成语音。<code>gTTS</code>和
+<code>edge-tts</code>
+都是不错的选择，pyttsx3而使用本地TTS功能，速度快但效果略差。<code>不生成MP3</code>则不生成语音。其中<code>gTTS</code>和<code>edge-tts</code>，请自行确认是否可用(可以通过访问Google网站进行确认)。如果不确认，建议使用pyttsx3。</li>
+<li><strong>慢速语音</strong>:
+勾选后，gTTS会以较慢的语速生成语音（其余tts暂不支持）。</li>
+<li><strong>字幕清理</strong>: 勾选 <code>移除...非对话内容</code>
+会自动删除字幕中如 <code>[音乐]</code>、<code>(掌声)</code>
+等内容。</li>
+<li><strong>注音选项</strong>:
+勾选后会为正面或背面的中/日/韩文添加注音。</li>
+<li><strong>时间轴偏移(ms)</strong>:
+如果音频和字幕有固定的延迟，在此输入毫秒数进行校正（正数使音频提前，负数使音频延迟）。</li>
+<li><strong>字幕时间段</strong>:
+如果您只想制作视频中某一部分的卡片，在此输入开始和结束时间 (格式
+<code>HH:MM:SS</code>)。</li>
+<li><strong>清理</strong>:将生成过程中的中间文件，在Anki包成功生成后，会自动删除过程中产生的临时音频、截图和数据文件</li>
+<li><strong>覆盖目标</strong>:
+勾选后，如果输出目录中已存在同名文件，会直接覆盖。</li>
+</ul></li>
+<li><strong>生成与预览</strong>:
+<ul>
+<li><strong>预览</strong>:
+在不生成完整包的情况下，快速生成一个HTML文件，在浏览器中预览效果。预览中不包含音频和预览图，仅包含文字（及注音）。</li>
+<li><strong>生成</strong>: 点击开始最终的生成Anki卡片包过程。</li>
+</ul></li>
+</ol>
+<h3 id="可选从csv文件生成">可选：从CSV文件生成</h3>
+<p>如果您已经有整理好的双语对照文本，可以使用此功能快速制卡。</p>
+<ol type="1">
+<li><strong>准备CSV文件</strong>: 创建一个 <code>.csv</code>
+文件，<strong>第一列</strong>为卡片正面文本，<strong>第二列</strong>为卡片背面文本。必须使用<code>UTF-8</code>编码。如果需要tts生成语音，请不要添加注音等内容。</li>
+<li><strong>CSV文件</strong>: 在软件中选择您准备好的CSV文件。</li>
+<li><strong>设置选项</strong>:
+与“生成Anki包”选项卡类似，您可以设置输出目录、包名称、TTS引擎和注音选项。请保证选中的正面和背面语言与CSV文件保持一致，否则会导致发音不正确。</li>
+<li><strong>生成</strong>:
+点击按钮开始生成Anki包。此模式下不会有音频提取和截图功能，音频将完全依赖TTS生成。</li>
+</ol>
+<p>以前我在学习外语的时候，会收集各种例句，方便记忆。但随着AI的发展，会变得更加方便。比如可以让Gemini，ChatGPT或者Kimi等AI助手生成相应的例句，便于学习。我的一个学习方法就是生成多个母语的例句，然后为每个母语例句生成3到5个相同意思的外语例句，这样可以学习多种表达方式，还因为相关性有助于高效记忆。比如我在学习日语的时候，就喜欢用下述提示词，让AI助手帮我生成相应的CSV文件：<code>生成10组N3级别的日语例句，每组包含1个中文翻译和3个意思相近的日语表达，生成csv时，中文放在第一列，三个日语表达句子使用换行符隔开，再合并后放在第二列，csv文件使用"表示分隔。</code>。以上提示词会生成相应的内容，保存为utf-8的csv文件即可。如果是在Gemini
+CLI之类的AI助手中使用，还可以在提示词后添加一句<code>最后写入n3.csv文件，用UTF-8格式保存。</code>就可以直接得到一个完美的CSV文件。</p>
+<h2 id="配置选项卡">配置选项卡</h2>
+<p>在这里您可以自定义软件的默认行为和卡片外观。</p>
+<ul>
+<li><strong>语言</strong>: 设置当前界面所用语言。</li>
+<li><strong>默认正面/背面字幕语言</strong>:
+设置您最常用的语言，软件会在“下载”和“生成Anki卡片功能”时优先使用它们作为默认值（可在相应界面上自行修改）。</li>
+<li><strong>默认TTS</strong>: 默认使用何种TTS。</li>
+<li><strong>网络请求间隔</strong>: <code>gTTS</code>和
+<code>edge-tts</code>会在线调用相应服务商提供的服务，这些服务商通常要求两次调用间至少保持0.5s的间隔。</li>
+<li><strong>Anki模板和样式</strong>:
+<ul>
+<li><strong>正面/背面模板</strong>: 使用Anki的模板语法（如
+<code>{{Question}}</code>,
+<code>{{Audio_Answer}}</code>）自定义卡片正反面的布局。</li>
+<li><strong>样式表</strong>:
+使用CSS代码自定义卡片的字体、颜色、背景等外观。</li>
+</ul></li>
+<li><strong>预览HTML模板</strong>:
+自定义点击“预览”按钮时生成的HTML文件的基础结构。一般不建议修改。</li>
+<li><strong>保存与恢复</strong>:
+<ul>
+<li><code>保存配置</code>: 保存您对以上所有设置的更改。</li>
+<li><code>恢复配置</code>: 撤销更改，恢复到上次保存的状态。</li>
+</ul></li>
+</ul>
+<h2 id="常见问题-faq">常见问题 (FAQ)</h2>
+<ol type="1">
+<li><p><strong>问：如何安装yt-dlp和FFmpeg </strong>
+答：FFmpeg不是必须的，但如果您需要从音视频中提取内容，则需要安装。从<a
+href="https://ffmpeg.org/">FFmpeg官网</a> 下载它，解压后，将其
+<code>bin</code> 目录的完整路径添加到您操作系统的环境变量
+<code>PATH</code> 中，然后重启本软件。</p></li>
+<li><p><strong>问：为什么我粘贴的YouTube链接提示无效？</strong>
+答：本工具目前只支持单个视频的URL，不支持播放列表 (Playlist)
+的URL。请确保您的链接中不包含 <code>list=</code>
+参数。如果您确认想使用别的网站视频或者把软件当作一个yt-dlp的UI，那么请把URL地址后面的勾选项选中，强制去除URL的检查。</p></li>
+<li><p><strong>问：注音功能支持哪些语言？</strong>
+答：目前支持为日语添加假名、为中文添加拼音、为韩语添加罗马音。软件会根据您选择的字幕文件名或配置中的默认语言自动判断。因为我自己知识有限，并不知道还有哪些语言需要添加注音。如有需要，可以在<code>github</code>上提交<code>issue</code>。</p></li>
+<li><p><strong>问：gTTS 和 edge-tts及pyttsx3 有什么区别？</strong>
+答：以上都是文本转语音引擎。gTTS (Google Text-to-Speech)
+速度可能稍慢，但支持慢速播放。edge-tts (Microsoft Edge Text-to-Speech)
+的语音通常更自然、质量更高，但不支持慢速播放。您可以根据需要选择。tts及pyttsx3则是本地语音引擎，速度极快，但有可能只支持少量语言，所以在gtts和edge-tts可用的情况下，优先使用这两者。如果一个引擎失败，软件会自动尝试另一个。</p></li>
+<li><p><strong>问：使用youtube自动化的字幕生成ANKI包是否有问题</strong>
+答：因为自动化的字幕，其中的断句可能存在很多问题，导致生成的语音和截取的语音都可能存在问题，我曾经尝试过多个视频，都不太合适，所以不是非常建议使用自动化字幕，尽可能使用创建者提供的字幕。</p></li>
+<li><p><strong>问：为什么有时候生成的anki包导入出错</strong>
+答：这点不好确定。因为我在自己的电脑上碰到过类似的问题，有时候重新生成就可以了，或者在手机上导入就正确了。如果您能重现这个问题，可以将相应的字幕或者csv文件发出来，我会尝试修复。</p></li>
+<li><p><strong>问：如何下载youtube自动化生成的字幕</strong> 答：首先安装
+<code>Get cookies.txt LOCALLY</code>扩展，然后导出<code>cookies.txt</code>，然后放置在软件目录中，与<code>config.json</code>并列。当软件发现<code>cookies.txt</code>存在的时候，会自动启用下载youtube自动化生成的字幕。提示Youtube的cookie有效期为6个小时，超时后无法保证能成功下载自动生成的字幕。最好在使用前更新cookies.txt。</p></li>
+<li><p><strong>问：是否有CSV示例文件</strong>
+答：<code>examples</code>目录下有四个示例csv文件。<code>cn-ja.csv</code>是正面中文，背面日文的示例，<code>en-cn.csv</code>是正面英文，背面中文的示例。<code>cn-ja-multi.csv</code>是正面中文，背面多个日文的示例，<code>en-cn-multi.csv</code>是正面英文，背面多个中文的示例。
+可以用这四个文件来体验一下使用CSV生成Anki卡片包的功能。</p></li>
+<li><p><strong>问：能否支持方言</strong>
+答：暂时不支持，后续考虑。</p></li>
+<li><p><strong>问：能否指定男女声</strong>
+答：如果用<code>edge-tts</code>默认是男声，而<code>gtts</code>则默认是女声。</p></li>
+<li><p><strong>问：有些语言生成不了语音</strong>
+答：因为我本人只会中文，英文和日文三种语言。很多语言尽管edge-tts和gtts支持，但我实在没有办法测试所有的语言支持，难免会出错。如果您会编写代码，可以在<code>app/aquarius/sevice/tts_generator.py</code>文件中找到
+<code>_male_lang_to_voice</code>
+，自行找到对应语言，检查<code>edge-tts</code>对应的语音模型是否正确（尽管我已经核对，但确实没有经过完整的测试，保证不了）。或者在<code>github</code>上提<code>issue</code>。</p></li>
+<li><p><strong>问：为什么查询视频信息时没有音视频格式</strong>
+答：因为Youtube会不定期更换规则，所以有时候<code>yt-dlp</code>会无法正确得到相应的音视频格式，所以需要定期更新<code>yt-dlp</code>。如果使用<code>直接运行</code>的方式，则可以在程序主目录中进入<code>venv</code>目录后运行<code>update_yt_dlp.bat</code>（Windows平台）或者<code>update_yt_dlp.sh</code>（Linux/MacOS平台），在更新<code>yt-dlp</code>后，再重新启动软件试试。</p></li>
+</ol>

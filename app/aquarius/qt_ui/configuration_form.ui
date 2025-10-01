@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>configuration_form</class>
+ <widget class="QWidget" name="configuration_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>686</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>configuration_form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="5" column="1">
+    <widget class="QTabWidget" name="template_tab">
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
+     <widget class="QWidget" name="front_template_tabpage">
+      <attribute name="title">
+       <string>front_template_tabpage</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QTextEdit" name="front_template_edit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="back_template_tabpage">
+      <attribute name="title">
+       <string>back_template_tabpage</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTextEdit" name="back_template_edit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="anki_style_tabpage">
+      <attribute name="title">
+       <string>anki_style_tabpage</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QTextEdit" name="anki_style_textedit"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="language_label">
+     <property name="text">
+      <string>language_label</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="default_back_lang_label">
+     <property name="text">
+      <string>default_back_lang_label</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="default_tts_label">
+     <property name="text">
+      <string>default_tts_label</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="default_front_lang_label">
+     <property name="text">
+      <string>default_front_lang_label</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="default_back_lang_combobox"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="template_label">
+     <property name="text">
+      <string>template_label</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="restore_pushbutton">
+       <property name="text">
+        <string>restore_pushbutton</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="save_pushbutton">
+       <property name="text">
+        <string>save_pushbutton</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="default_tts_combobox"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="default_front_lang_combobox"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="language_combobox"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="sleep_interval_label">
+     <property name="toolTip">
+      <string>sleep_interval_tooltip</string>
+     </property>
+     <property name="text">
+      <string>sleep_interval_label</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QComboBox" name="sleep_interval_combobox">
+     <property name="toolTip">
+      <string>sleep_interval_tooltip</string>
+     </property>
+     
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
