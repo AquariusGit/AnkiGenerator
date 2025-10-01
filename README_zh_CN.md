@@ -19,7 +19,7 @@
 
 ## 帮助
 如果需要帮助，直接按F1键即可打开帮助文件。
-[English](src/help/help_en.md) [简体中文](help/help_zh_hans.md) [繁体中文](help/help_zh_hant.md) [日本語](help/help_ja.md) [한국어](help/help_ko.md)  [Tiếng Việt](help/help_vi.md)
+[English](help/help_en.md) [简体中文](help/help_zh_hans.md) [繁体中文](help/help_zh_hant.md) [日本語](help/help_ja.md) [한국어](help/help_ko.md)  [Tiếng Việt](help/help_vi.md)
 
 
 ![下载界面](images/download_tab.png)
