@@ -41,20 +41,19 @@ def create_anki_cards(anki_generaotr,progress: Progress):
 
     app_config:AppConfig = get_app_config()
 
-    front_template = "{{Question}}\n{{Audio_Question}}"
-    back_template = "{{Answer}}\n{{Audio_Answer}}"
+    front_template = "{{Question}}\n{{Audio_Question}}\n{{Description_Question}}"
+    back_template = "{{Answer}}\n{{Audio_Answer}}\n{{Description_Answer}}"
     style = app_config.anki_style
     preview_html_template = app_config.preview_html_template
-    audio_placeholder_q = "<div style='color: #888; font-style: italic;'>⏩</div>"
-    audio_placeholder_a = "<div style='color: #888; font-style: italic;'>⏩</div>"
+    audio_placeholder = "<div style='color: #888; font-style: italic;'>⏩</div>"
     screenshot_placeholder = "<div style='color: #888; font-style: italic;'>🌇</div>"
 
     for i, card in enumerate(anki_cards):
         question = card.front_text_ruby
         answer = card.back_text_ruby
 
-        front_html = front_template.replace("{{Question}}", card.front_text_ruby).replace("{{Audio_Question}}", audio_placeholder_q)
-        back_html = back_template.replace("{{Answer}}", card.back_text_ruby).replace("{{Audio_Answer}}", audio_placeholder_a).replace("{{Screenshot}}", screenshot_placeholder)
+        front_html = front_template.replace("{{Question}}", card.front_text_ruby).replace("{{Audio_Question}}", audio_placeholder).replace("{{Description_Question}}", card.front_description)
+        back_html = back_template.replace("{{Answer}}", card.back_text_ruby).replace("{{Audio_Answer}}", audio_placeholder).replace("{{Description_Answer}}", card.back_description).replace("{{Screenshot}}", screenshot_placeholder)
         
         preview_card_title=QCoreApplication.translate("base_form","preview card title")+" "+str(i+1)
         preview_card_front=QCoreApplication.translate("base_form","preview card front")

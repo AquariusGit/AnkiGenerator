@@ -6,11 +6,16 @@ from dataclasses import dataclass
 class AnkiCard:
     front_text: str
     back_text: str
+
     front_text_ruby: str = ""
     back_text_ruby: str = ""
+
+    front_description: str = ""
+    back_description: str = ""
     
     front_audio: str = ""
     back_audio: str = ""
+
     screenshot: str = ""
 
 

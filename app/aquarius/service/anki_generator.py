@@ -85,14 +85,15 @@ class BaseAnkiGenerator(ABC):
         anki_card:AnkiCard
 
         for anki_card in cards_data:
-            front_text_ruby = anki_card.front_text_ruby
-            back_text_ruby = anki_card.back_text_ruby
-
-            fields=[front_text_ruby, back_text_ruby]
-
-            fields.append(anki_card.front_audio)
-            fields.append(anki_card.back_audio)
-            fields.append(anki_card.screenshot)
+           
+            fields=[anki_card.front_text_ruby, 
+                    anki_card.back_text_ruby,
+                    anki_card.front_audio,  
+                    anki_card.back_audio, 
+                    anki_card.screenshot,
+                    anki_card.front_description,
+                    anki_card.back_description
+                    ]
             
             note = genanki.Note(model=model,fields=fields)
            
@@ -286,19 +287,24 @@ class BaseAnkiGenerator(ABC):
         
         fields=[
                 {'name': 'Question'},
-                {'name': 'Answer'}
+                {'name': 'Answer'},
+                {'name': 'Audio_Question'},
+                {'name': 'Audio_Answer'},
+                {'name': 'Screenshot'},
+                {'name': 'Description_Question'},
+                {'name': 'Description_Answer'}
             ]
         
-        # fixme
+        
 
-        #if front_tts_audio_generator is not None:
-        fields.append({'name': 'Audio_Question'})
+        # if front_tts_audio_generator is not None:
+        #     fields.append({'name': 'Audio_Question'})
 
-        #if back_tts_audio_generator is not None:
-        fields.append({'name': 'Audio_Answer'})
+        # if back_tts_audio_generator is not None:
+        #     fields.append({'name': 'Audio_Answer'})
 
-        #if image_creator is not None:
-        fields.append({'name': 'Screenshot'})
+        # if image_creator is not None:
+        #     fields.append({'name': 'Screenshot'})
 
         anki_model_name=QCoreApplication.translate("generator", "Anki Card Generator")     
         anki_card_name =QCoreApplication.translate("generator", "Bilingual Learning Card")     
@@ -438,8 +444,15 @@ class CsvAnkiGenerator(BaseAnkiGenerator):
                         back_text = row[1].strip()
         
                         if front_text and back_text:  # 确保两个字段都不为空
-                            anki_card = AnkiCard(front_text, back_text)
+                            anki_card = AnkiCard(front_text, back_text)                            
+
+                            if len(row) >= 3:
+                                anki_card.front_description = row[2].strip()
+                            if len(row) >= 4:
+                                anki_card.back_description = row[3].strip()
+
                             cards_data.append(anki_card)
+
         except Exception as e:
             progress.info(QCoreApplication.translate("generator", "Error while parsing csv: {error}.\nPlease make sure the format is right and encoded in UTF-8").format(error=str(e)))
             raise e
